@@ -1,0 +1,2 @@
+# Function dependencies for python modelue
+google-cloud-bigquery
