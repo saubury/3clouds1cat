@@ -10,18 +10,16 @@ def http_request(request):
     if request_json:
         # request_json is a dictionary; convert dictionary into string using json.dumps() 
         result_json_string = json.dumps(request_json) 
+        print (f'Body: {result_json_string}')
 
-        # Construct a BigQuery client object.
+        # Construct a BigQuery client object and prepares a reference to the dataset
         client = bigquery.Client()
-
-        # Prepares a reference to the dataset
-        dataset_ref = client.dataset('example_dataset')
-        table_ref = dataset_ref.table('my_table_name')
+        dataset_ref = client.dataset('cat_location_dataset')
+        table_ref = dataset_ref.table('cat_location')
         table = client.get_table(table_ref)  # API call
-        rows_to_insert = [
-            (u'TEST', 1, result_json_string, datetime.now()),
-        ]
+        rows_to_insert = [  (datetime.now(), result_json_string),  ]
         errors = client.insert_rows(table, rows_to_insert)  # API request
         assert errors == []
 
-    return f'Done!'
+    return (f'Done')
+    
