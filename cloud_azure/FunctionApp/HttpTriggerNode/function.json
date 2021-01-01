@@ -1,0 +1,28 @@
+﻿{
+  "bindings": [
+    {
+      "authLevel": "anonymous",
+      "type": "httpTrigger",
+      "direction": "in",
+      "name": "req",
+      "methods": [
+        "get",
+        "post"
+      ]
+    },
+    {
+      "type": "http",
+      "direction": "out",
+      "name": "res"
+    },
+    {
+      "name": "httpDocument",
+      "direction": "out",
+      "type": "cosmosDB",
+      "databaseName": "taskDatabase",
+      "collectionName": "MyHTTPCollection",
+      "createIfNotExists": true,
+      "connectionStringSetting": "mycosmosdbname_DOCUMENTDB"
+    }
+  ]
+}
